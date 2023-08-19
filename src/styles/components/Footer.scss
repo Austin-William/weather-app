@@ -1,0 +1,7 @@
+@use "../variables.scss" as *;
+
+.Footer {
+    height: clamp(60px, 10vw, 100px);
+    width: 100%;
+    background-color: $background-color-footer;
+}
