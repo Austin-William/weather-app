@@ -15,7 +15,7 @@ function Navbar(props: any) {
             <div className="container">
                 <div className="wrapper">
                     <IoSearchOutline className="search__logo" />
-                    <input className="search__input" type="text" placeholder="Search" onKeyDown={handleSearch} />
+                    <input className="search__input" type="text" placeholder="Search a city" onKeyDown={handleSearch} />
                 </div>
             </div>
         </div>

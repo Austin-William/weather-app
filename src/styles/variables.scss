@@ -5,11 +5,11 @@ $color-4: #737373;
 $color-5: #EF6824;
 $color-6: #191919;
 
-$font-color: $color-3;
+$font-color: #fefefe;
 
 $background-color-navbar: $color-5;
 $search-input-color: transparent;
-$search-input-text-color: #ffffff;
+$search-input-text-color: $font-color;
 
 $background-color-footer: $color-2;
 
