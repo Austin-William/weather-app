@@ -9,27 +9,27 @@ function Footer() {
             links: [
                 {
                     title: "Current Weather",
-                    link: "/current-weather",
+                    link: "#current-weather",
                 },
                 {
                     title: "Forecast",
-                    link: "/forecast",
+                    link: "#forecast",
                 },
                 {
                     title: "Timezone",
-                    link: "/timezone",
+                    link: "#timezone",
                 },
                 {
                     title: "Marine",
-                    link: "/marine",
+                    link: "#marine",
                 },
                 {
                     title: "Astronomy",
-                    link: "/astronomy",
+                    link: "#astronomy",
                 },
                 {
                     title: "Sports",
-                    link: "/sports",
+                    link: "#sports",
                 },
             ],
         },
