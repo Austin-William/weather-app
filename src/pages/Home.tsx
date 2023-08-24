@@ -9,7 +9,7 @@ import Footer from "../components/Footer";
 import "../styles/pages/Home.scss";
 
 function Home() {
-    const [search, setSearch] = React.useState("");
+    const [search, setSearch] = React.useState("Paris");
     const [currentWeather, setCurrentWeather] = React.useState({});
     const [forecast, setForecast] = React.useState({});
     const [timezone, setTimezone] = React.useState({});
@@ -20,9 +20,10 @@ function Home() {
     const key = process.env.REACT_APP_API_KEY;
     const link = "http://api.weatherapi.com/v1";
 
-    function getDataFromApi(type: string = "current") {
-        axios.get(`${link}/${type}.json?key=${key}&q=${search}`)
+    async function getDataFromApi(type: string = "current") {
+        await axios.get(`${link}/${type}.json?key=${key}&q=${search}`)
             .then((response) => {
+                console.log(response.data);
                 switch (type) {
                     case "current" || "search":
                         setCurrentWeather(response.data);
@@ -61,12 +62,30 @@ function Home() {
             });
     }
 
+    function getSearch() {
+        const tmp = localStorage.getItem("search");
+
+        if (tmp) {
+            setSearch(JSON.parse(tmp));
+        }
+    }
+
+    function saveSearch() {
+        localStorage.setItem("search", JSON.stringify(search));
+    }
+
     function getSearchWeather(value: string) {
         if (value) {
             setSearch(value);
+            saveSearch();
             getDataFromApi();
         }
     }
+
+    React.useEffect(() => {
+        getSearch();
+        getDataFromApi();
+    }, [search]);
 
     return (
         <div className="Home">
@@ -74,7 +93,6 @@ function Home() {
                 <Navbar onSearch={getSearchWeather} />
                 <Weather
                     current={currentWeather}
-                    search={search}
                     forecast={forecast}
                     timezone={timezone}
                     marine={marine}

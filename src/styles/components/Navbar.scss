@@ -46,7 +46,7 @@
                     color: $search-input-text-color;
                     letter-spacing: 1px;
                     font-weight: 500;
-                    font-size: 0.9rem;
+                    font-size: clamp(0.8rem, 1.5vw, 1rem);
                     font-family: 'Mars', sans-serif;
                 }
 

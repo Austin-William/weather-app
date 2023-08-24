@@ -1,10 +1,11 @@
 import React from "react";
 
+import CurrentWeather from "../screens/CurrentWeather";
+
 import "../styles/components/Weather.scss";
 
 interface Props {
     current: any;
-    search: any;
     forecast: any;
     timezone: any;
     marine: any;
@@ -13,10 +14,12 @@ interface Props {
 }
 
 function Weather(props: Props) {
+    const current = props.current;
+    
     return (
         <div className="Weather">
             <div className="container">
-                <h1>Weather</h1>
+                <CurrentWeather data={current} />
             </div>
         </div>
     );
