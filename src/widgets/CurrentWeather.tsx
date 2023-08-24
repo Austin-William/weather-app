@@ -6,6 +6,8 @@ import { BiSun } from "react-icons/bi";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { BsCloudsFill } from "react-icons/bs";
 
+import Spinner from "../components/Spinner";
+
 import "../styles/widgets/CurrentWeather.scss";
 
 interface Props {
@@ -22,7 +24,7 @@ function CurrentWeather(props: Props) {
     function delayDisplay() {
         setTimeout(() => {
             setIsLoaded(true);
-        }, 500);
+        }, 1000);
     }
 
     React.useEffect(() => {
@@ -137,7 +139,7 @@ function CurrentWeather(props: Props) {
                         </section>
                         :
                         <div className="loading">
-                            <div className="spinner"></div>
+                            <Spinner />
                         </div>
                 }
             </div>
