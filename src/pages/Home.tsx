@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 import Navbar from "../components/Navbar";
-import Weather from "../components/Weather";
+import Weather from "../screens/Weather";
 import Footer from "../components/Footer";
 
 import "../styles/pages/Home.scss";

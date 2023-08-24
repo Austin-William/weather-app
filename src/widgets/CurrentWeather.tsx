@@ -6,7 +6,7 @@ import { BiSun } from "react-icons/bi";
 import { AiFillEyeInvisible } from "react-icons/ai";
 import { BsCloudsFill } from "react-icons/bs";
 
-import "../styles/screens/CurrentWeather.scss";
+import "../styles/widgets/CurrentWeather.scss";
 
 interface Props {
     data: any;

@@ -1,8 +1,8 @@
 import React from "react";
 
-import CurrentWeather from "../screens/CurrentWeather";
+import CurrentWeather from "../widgets/CurrentWeather";
 
-import "../styles/components/Weather.scss";
+import "../styles/screens/Weather.scss";
 
 interface Props {
     current: any;
