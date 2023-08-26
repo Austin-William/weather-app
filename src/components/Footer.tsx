@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "../styles/components/Footer.scss";
 
@@ -9,27 +10,27 @@ function Footer() {
             links: [
                 {
                     title: "Current Weather",
-                    link: "#current-weather",
+                    link: "/current-weather",
                 },
                 {
                     title: "Forecast",
-                    link: "#forecast",
+                    link: "/forecast",
                 },
                 {
                     title: "Timezone",
-                    link: "#timezone",
+                    link: "/timezone",
                 },
                 {
                     title: "Marine",
-                    link: "#marine",
+                    link: "/marine",
                 },
                 {
                     title: "Astronomy",
-                    link: "#astronomy",
+                    link: "/astronomy",
                 },
                 {
                     title: "Sports",
-                    link: "#sports",
+                    link: "/sports",
                 },
             ],
         },
@@ -77,7 +78,7 @@ function Footer() {
                                 <ul>
                                     {section.links.map((link, index) => (
                                         <li key={index}>
-                                            <a href={link.link} target="_blank" rel="noreferrer">{link.title}</a>
+                                            <Link to={link.link}>{link.title}</Link>
                                         </li>
                                     ))}
                                 </ul>

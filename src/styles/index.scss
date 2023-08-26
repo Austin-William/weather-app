@@ -31,4 +31,9 @@ code {
         border-radius: 20px;
         border: 1px solid $color-1;
     }
+
+    ::selection {
+        background: $color-5;
+        color: $color-1;
+    }
 }

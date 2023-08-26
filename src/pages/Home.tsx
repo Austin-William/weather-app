@@ -23,7 +23,6 @@ function Home() {
     async function getDataFromApi(type: string = "current") {
         await axios.get(`${link}/${type}.json?key=${key}&q=${search}`)
             .then((response) => {
-                console.log(response.data);
                 switch (type) {
                     case "current" || "search":
                         setCurrentWeather(response.data);
@@ -85,6 +84,7 @@ function Home() {
     React.useEffect(() => {
         getSearch();
         getDataFromApi();
+        getDataFromApi("forecast");
     }, [search]);
 
     return (

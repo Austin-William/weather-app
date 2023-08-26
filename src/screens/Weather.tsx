@@ -1,6 +1,8 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 import CurrentWeather from "../widgets/CurrentWeather";
+import Forecast from "../widgets/Forecast";
 
 import "../styles/screens/Weather.scss";
 
@@ -14,12 +16,16 @@ interface Props {
 }
 
 function Weather(props: Props) {
-    const current = props.current;
-    
+    const currentData = props.current;
+    const forecastData = props.forecast;
+
     return (
         <div className="Weather">
             <div className="container">
-                <CurrentWeather data={current} />
+                <Routes>
+                    <Route path="/" element={<CurrentWeather data={currentData} />} />
+                    <Route path="/forecast" element={<Forecast data={forecastData} />} />
+                </Routes>
             </div>
         </div>
     );

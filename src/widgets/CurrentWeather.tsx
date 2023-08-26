@@ -7,6 +7,7 @@ import { AiFillEyeInvisible } from "react-icons/ai";
 import { BsCloudsFill } from "react-icons/bs";
 
 import Spinner from "../components/Spinner";
+import Switch from "../components/Switch";
 
 import "../styles/widgets/CurrentWeather.scss";
 
@@ -19,7 +20,8 @@ function CurrentWeather(props: Props) {
     const [isKm, setIsKm] = React.useState(true);
     const [isLoaded, setIsLoaded] = React.useState(false);
 
-    const data = props.data;
+    const data = props.data.current;
+    const location = props.data.location;
 
     function delayDisplay() {
         setTimeout(() => {
@@ -40,20 +42,20 @@ function CurrentWeather(props: Props) {
                             <div className="weather">
                                 <div className="top">
                                     <div className="image">
-                                        <img src={data.current.condition.icon} alt={data.current.condition.text} />
+                                        <img src={data.condition.icon} alt={data.condition.text} />
                                     </div>
                                     <div className="temperature">
-                                        <h1>{isCelsius ? data.current.temp_c : data.current.temp_f}°{isCelsius ? "C" : "F"}</h1>
+                                        <h1>{isCelsius ? data.temp_c : data.temp_f}°{isCelsius ? "C" : "F"}</h1>
                                     </div>
                                 </div>
                                 <div className="bottom">
                                     <div className="location">
-                                        <h2>{data.location.name}</h2>
-                                        <h4>{data.location.region}, {data.location.country}</h4>
+                                        <h2>{location.name}</h2>
+                                        <h4>{location.region}, {location.country}</h4>
                                     </div>
                                     <div className="feelslike">
-                                        <span>{data.current.condition.text}</span>
-                                        <span>Feels like : {isCelsius ? data.current.feelslike_c : data.current.feelslike_f}°{isCelsius ? "C" : "F"}</span>
+                                        <span>{data.condition.text}</span>
+                                        <span>Feels like : {isCelsius ? data.feelslike_c : data.feelslike_f}°{isCelsius ? "C" : "F"}</span>
                                     </div>
                                 </div>
                             </div>
@@ -63,11 +65,11 @@ function CurrentWeather(props: Props) {
                                     <div className="card__body">
                                         <div className="data">
                                             <span className="icon"><FaWind /></span>
-                                            <span className="text">{isKm ? data.current.wind_kph : data.current.wind_mph} {isKm ? "km/h" : "mph"}</span>
+                                            <span className="text">{isKm ? data.wind_kph : data.wind_mph} {isKm ? "km/h" : "mph"}</span>
                                         </div>
                                         <div className="data">
                                             <span className="icon"><GiMultiDirections /></span>
-                                            <span className="text">{data.current.wind_dir}</span>
+                                            <span className="text">{data.wind_dir}</span>
                                         </div>
                                     </div>
                                 </section>
@@ -76,7 +78,7 @@ function CurrentWeather(props: Props) {
                                     <div className="card__body">
                                         <div className="data">
                                             <span className="icon"><IoWater /></span>
-                                            <span className="text">{data.current.humidity}%</span>
+                                            <span className="text">{data.humidity}%</span>
                                         </div>
                                     </div>
                                 </section>
@@ -85,7 +87,7 @@ function CurrentWeather(props: Props) {
                                     <div className="card__body">
                                         <div className="data">
                                             <span className="icon"><IoRainySharp /></span>
-                                            <span className="text">{data.current.precip_mm} mm</span>
+                                            <span className="text">{data.precip_mm} mm</span>
                                         </div>
                                     </div>
                                 </section>
@@ -94,7 +96,7 @@ function CurrentWeather(props: Props) {
                                     <div className="card__body">
                                         <div className="data">
                                             <span className="icon"><IoEarth /></span>
-                                            <span className="text">{data.current.pressure_mb} mb</span>
+                                            <span className="text">{data.pressure_mb} mb</span>
                                         </div>
                                     </div>
                                 </section>
@@ -103,7 +105,7 @@ function CurrentWeather(props: Props) {
                                     <div className="card__body">
                                         <div className="data">
                                             <span className="icon"><BiSun /></span>
-                                            <span className="text">{data.current.uv}</span>
+                                            <span className="text">{data.uv}</span>
                                         </div>
                                     </div>
                                 </section>
@@ -112,7 +114,7 @@ function CurrentWeather(props: Props) {
                                     <div className="card__body">
                                         <div className="data">
                                             <span className="icon"><AiFillEyeInvisible /></span>
-                                            <span className="text">{data.current.vis_km} km</span>
+                                            <span className="text">{data.vis_km} km</span>
                                         </div>
                                     </div>
                                 </section>
@@ -121,20 +123,14 @@ function CurrentWeather(props: Props) {
                                     <div className="card__body">
                                         <div className="data">
                                             <span className="icon"><BsCloudsFill /></span>
-                                            <span className="text">{data.current.cloud}%</span>
+                                            <span className="text">{data.cloud}%</span>
                                         </div>
                                     </div>
                                 </section>
                             </div>
                             <div className="switches">
-                                <div className="switch">
-                                    <button className={isCelsius ? "active" : ""} onClick={() => setIsCelsius(true)} disabled={isCelsius}>C</button>
-                                    <button className={!isCelsius ? "active" : ""} onClick={() => setIsCelsius(false)} disabled={!isCelsius}>F</button>
-                                </div>
-                                <div className="switch">
-                                    <button className={isKm ? "active" : ""} onClick={() => setIsKm(true)} disabled={isKm}>km/h</button>
-                                    <button className={!isKm ? "active" : ""} onClick={() => setIsKm(false)} disabled={!isKm}>mph</button>
-                                </div>
+                                <Switch isState={isCelsius} setIsState={setIsCelsius} option_1="C" option_2="F" />
+                                <Switch isState={isKm} setIsState={setIsKm} option_1="km/h" option_2="mph" />
                             </div>
                         </section>
                         :
