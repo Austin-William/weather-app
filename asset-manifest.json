@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/WhatIsTheWeatherLikeToday/static/css/main.177ca0c2.css",
-    "main.js": "/WhatIsTheWeatherLikeToday/static/js/main.766fd445.js",
+    "main.css": "/WhatIsTheWeatherLikeToday/static/css/main.b4f014d4.css",
+    "main.js": "/WhatIsTheWeatherLikeToday/static/js/main.0d94133c.js",
     "static/media/Mars.ttf": "/WhatIsTheWeatherLikeToday/static/media/Mars.dec633a3605714802e38.ttf",
     "index.html": "/WhatIsTheWeatherLikeToday/index.html",
-    "main.177ca0c2.css.map": "/WhatIsTheWeatherLikeToday/static/css/main.177ca0c2.css.map",
-    "main.766fd445.js.map": "/WhatIsTheWeatherLikeToday/static/js/main.766fd445.js.map"
+    "main.b4f014d4.css.map": "/WhatIsTheWeatherLikeToday/static/css/main.b4f014d4.css.map",
+    "main.0d94133c.js.map": "/WhatIsTheWeatherLikeToday/static/js/main.0d94133c.js.map"
   },
   "entrypoints": [
-    "static/css/main.177ca0c2.css",
-    "static/js/main.766fd445.js"
+    "static/css/main.b4f014d4.css",
+    "static/js/main.0d94133c.js"
   ]
 }
