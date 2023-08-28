@@ -1,0 +1,24 @@
+@use "../variables.scss" as *;
+
+.drawer__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border: none;
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .drawer__button__icon {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+}

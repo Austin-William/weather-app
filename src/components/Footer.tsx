@@ -10,7 +10,7 @@ function Footer() {
             links: [
                 {
                     title: "Current Weather",
-                    link: "/current-weather",
+                    link: "/",
                 },
                 {
                     title: "Forecast",

@@ -3,102 +3,108 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 import Navbar from "../components/Navbar";
-import Weather from "../screens/Weather";
 import Footer from "../components/Footer";
+import EmptySearch from "../components/EmptySearch";
+import Weather from "../screens/Weather";
 
 import "../styles/pages/Home.scss";
 
 function Home() {
-    const [search, setSearch] = React.useState("Paris");
-    const [currentWeather, setCurrentWeather] = React.useState({});
-    const [forecast, setForecast] = React.useState({});
-    const [timezone, setTimezone] = React.useState({});
-    const [marine, setMarine] = React.useState({});
-    const [astronomy, setAstronomy] = React.useState({});
-    const [sports, setSports] = React.useState({});
+    const [currentWeather, setCurrentWeather] = React.useState(null);
+    const [forecast, setForecast] = React.useState(null);
+    const [timezone, setTimezone] = React.useState(null);
+    const [marine, setMarine] = React.useState(null);
+    const [astronomy, setAstronomy] = React.useState(null);
+    const [sports, setSports] = React.useState(null);
+
+    let search = localStorage.getItem("search");
 
     const key = process.env.REACT_APP_API_KEY;
     const link = "http://api.weatherapi.com/v1";
 
-    async function getDataFromApi(type: string = "current") {
-        await axios.get(`${link}/${type}.json?key=${key}&q=${search}`)
-            .then((response) => {
-                switch (type) {
-                    case "current" || "search":
-                        setCurrentWeather(response.data);
-                        break;
-                    case "forecast":
-                        setForecast(response.data);
-                        break;
-                    case "timezone":
-                        setTimezone(response.data);
-                        break;
-                    case "marine":
-                        setMarine(response.data);
-                        break;
-                    case "astronomy":
-                        setAstronomy(response.data);
-                        break;
-                    case "sports":
-                        setSports(response.data);
-                        break;
-
-                    default:
-                        break;
-                }
-            })
-            .catch((error) => {
-                toast.error(error.message, {
-                    position: "bottom-center",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "dark",
-                });
-            });
-    }
-
-    function getSearch() {
-        const tmp = localStorage.getItem("search");
-
-        if (tmp) {
-            setSearch(JSON.parse(tmp));
-        }
-    }
-
     function saveSearch() {
-        localStorage.setItem("search", JSON.stringify(search));
+        if (search) {
+            localStorage.setItem("search", JSON.stringify(search));
+        }
     }
 
     function getSearchWeather(value: string) {
         if (value) {
-            setSearch(value);
+            search = value;
             saveSearch();
-            getDataFromApi();
         }
     }
 
     React.useEffect(() => {
-        getSearch();
-        getDataFromApi();
-        getDataFromApi("forecast");
-    }, [search]);
+        function getDataFromApi(type: string = "current") {
+            if (search) {
+                axios.get(`${link}/${type}.json?key=${key}&q=${search}`)
+                    .then((response) => {
+                        console.log(response.data);
+                        switch (type) {
+                            case "current" || "search":
+                                setCurrentWeather(response.data);
+                                break;
+                            case "forecast":
+                                setForecast(response.data);
+                                break;
+                            case "timezone":
+                                setTimezone(response.data);
+                                break;
+                            case "marine":
+                                setMarine(response.data);
+                                break;
+                            case "astronomy":
+                                setAstronomy(response.data);
+                                break;
+                            case "sports":
+                                setSports(response.data);
+                                break;
+
+                            default:
+                                break;
+                        }
+                    })
+                    .catch((error) => {
+                        toast.error(error.message, {
+                            position: "bottom-center",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "dark",
+                        });
+                    });
+            }
+        }
+
+        function getDatas() {
+            getDataFromApi();
+            getDataFromApi("forecast");
+            //getDataFromApi("timezone");
+        }
+
+        getDatas();
+    }, [search, key]);
 
     return (
         <div className="Home">
             <div className="container">
-                <Navbar onSearch={getSearchWeather} />
-                <Weather
-                    current={currentWeather}
-                    forecast={forecast}
-                    timezone={timezone}
-                    marine={marine}
-                    astronomy={astronomy}
-                    sports={sports}
-                />
+                <Navbar onSearch={getSearchWeather} search={search ? search : ""} data={currentWeather} />
+                {
+                    search && currentWeather && forecast ?
+                        <Weather
+                            current={currentWeather}
+                            forecast={forecast}
+                            timezone={timezone}
+                            marine={marine}
+                            astronomy={astronomy}
+                            sports={sports}
+                        />
+                        : <EmptySearch />
+                }
                 <Footer />
             </div>
         </div>

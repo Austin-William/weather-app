@@ -25,6 +25,7 @@ function Weather(props: Props) {
                 <Routes>
                     <Route path="/" element={<CurrentWeather data={currentData} />} />
                     <Route path="/forecast" element={<Forecast data={forecastData} />} />
+                    <Route path="*" element={<CurrentWeather data={currentData} />} />
                 </Routes>
             </div>
         </div>
