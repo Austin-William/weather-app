@@ -1,8 +1,12 @@
 import React from "react";
-import { IoSearchOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
+
+import Drawer from "./Drawer";
+import SearchBar from "./SearchBar";
+
+import { sections } from "../data/datas";
 
 import "../styles/components/Navbar.scss";
-import Drawer from "./Drawer";
 
 interface Props {
     search: string;
@@ -10,29 +14,10 @@ interface Props {
     onSearch: (search: string) => void;
 }
 
-interface SearchProps {
-    onSearch: (search: string) => void;
-}
-
 interface DisplayProps {
     search: string;
     data?: any;
-}
-
-function SearchBar(props: SearchProps) {
-    function handleSearch(event: any) {
-        if (event.key === "Enter") {
-            props.onSearch(event.target.value);
-            window.location.reload();
-        }
-    }
-
-    return (
-        <div className="search">
-            <IoSearchOutline className="search__logo" />
-            <input className="search__input" type="text" placeholder="Search a city" onKeyDown={handleSearch} />
-        </div>
-    )
+    onSearch: (search: string) => void;
 }
 
 function DisplaySearch(props: DisplayProps) {
@@ -41,8 +26,23 @@ function DisplaySearch(props: DisplayProps) {
     return (
         <div className="datas">
             <div className="datas__container">
-                <Drawer>
-                    Test
+                <Drawer onSearch={props.onSearch}>
+                    {
+                        sections.map((section, index) => (
+                            <div className="section" key={index}>
+                                <div className="wrapper">
+                                    <h2>{section.title}</h2>
+                                    <ul>
+                                        {section.links.map((link, index) => (
+                                            <li key={index}>
+                                                <Link to={link.link}>{link.title}</Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        ))
+                    }
                 </Drawer>
             </div>
             <h1 className="datas__container datas__title__center">
@@ -84,7 +84,7 @@ function Navbar(props: Props) {
                     activateSearchBar ?
                         <SearchBar onSearch={props.onSearch} />
                         :
-                        <DisplaySearch search={props.search} data={props.data} />
+                        <DisplaySearch search={props.search} data={props.data} onSearch={props.onSearch} />
                 }
             </div>
         </div>
