@@ -31,6 +31,11 @@ function ButtonDrawer({ open, setOpen }: ButtonDrawerProps) {
 }
 
 function DrawerContent({ open, children, onSearch, setOpen }: DrawerContentProps) {
+    function removeSavedCity() {
+        localStorage.removeItem('search');
+        window.location.reload();
+    }
+
     return (
         <div className={open ? "drawer open" : "drawer"}>
             <div className='drawer__close'>
@@ -38,15 +43,20 @@ function DrawerContent({ open, children, onSearch, setOpen }: DrawerContentProps
                     <LiaTimesCircle className="drawer__button__icon button__close__icon" />
                 </button>
             </div>
-            <div>
-                <div className='drawer__content'>
-                    <div className='drawer__search'>
-                        <SearchBar onSearch={onSearch} />
-                    </div>
-                    <div className='drawer__items'>
-                        {children}
-                    </div>
+            <div className='drawer__content'>
+                <div className='drawer__search'>
+                    <SearchBar onSearch={onSearch} />
                 </div>
+                <div className='drawer__items'>
+                    {children}
+                </div>
+            </div>
+            <div className='drawer__buttons'>
+                <button className='button__reset__saved__city' onClick={removeSavedCity}>
+                    <span className='button__reset__saved__city__text'>
+                        Reset
+                    </span>
+                </button>
             </div>
         </div>
     );

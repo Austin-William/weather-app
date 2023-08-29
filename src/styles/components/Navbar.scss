@@ -29,6 +29,66 @@
 
     .datas__container {
         flex-basis: 33.33%;
+
+        .drawer__section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+
+            .drawer__wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                overflow-y: auto;
+
+                .drawer__section__title {
+                    font-size: clamp(1.2rem, 2vw, 1.5rem);
+                    color: $color-5;
+                    letter-spacing: 1px;
+                    text-align: left;
+                }
+
+                .drawer__section__list {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    gap: 1rem;
+
+                    .drawer__section__item {
+                        list-style: none;
+
+                        .drawer__section__link {
+                            font-size: clamp(0.6rem, 1vw, 1rem);
+                            font-weight: 500;
+                            color: $font-color;
+                            letter-spacing: 1px;
+                            text-decoration: none;
+                            transition: all 0.3s ease-in-out;
+
+                            &::after {
+                                content: "";
+                                display: block;
+                                width: 0;
+                                height: 2px;
+                                background-color: $color-5;
+                                transition: all 0.3s ease-in;
+                            }
+
+                            &:hover {
+                                color: $color-5;
+
+                                &::after {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .datas__title__center {
@@ -44,5 +104,61 @@
         color: $color-1;
         letter-spacing: 1px;
         text-align: right;
+    }
+}
+
+
+.Navbar__empty__title {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 500;
+    color: $font-color;
+    text-align: center;
+    animation: lights 5s 750ms linear infinite;
+}
+
+@keyframes lights {
+    0% {
+        color: hsl(230, 40%, 80%);
+        text-shadow:
+            0 0 1em rgba($color-5, 0.2),
+            0 0 0.125em rgba($color-5, 0.3),
+            -1em -0.125em 0.5em rgba(255, 187, 51, 0),
+            1em 0.125em 0.5em rgba(51, 187, 255, 0);
+    }
+
+    30% {
+        color: hsl(230, 80%, 90%);
+        text-shadow:
+            0 0 1em rgba($color-5, 0.5),
+            0 0 0.125em rgba($color-5, 0.5),
+            -0.5em -0.125em 0.25em rgba(255, 187, 51, 0.2),
+            0.5em 0.125em 0.25em rgba(51, 187, 255, 0.4);
+    }
+
+    40% {
+        color: hsl(230, 100%, 95%);
+        text-shadow:
+            0 0 1em rgba($color-5, 0.5),
+            0 0 0.125em rgba(255, 204, 238, 0.5),
+            -0.25em -0.125em 0.125em rgba(255, 187, 51, 0.2),
+            0.25em 0.125em 0.125em rgba(51, 187, 255, 0.4);
+    }
+
+    70% {
+        color: hsl(230, 80%, 90%);
+        text-shadow:
+            0 0 1em rgba($color-5, 0.5),
+            0 0 0.125em rgba($color-5, 0.5),
+            0.5em -0.125em 0.25em rgba(255, 187, 51, 0.2),
+            -0.5em 0.125em 0.25em rgba(51, 187, 255, 0.4);
+    }
+
+    100% {
+        color: hsl(230, 40%, 80%);
+        text-shadow:
+            0 0 1em rgba($color-5, 0.2),
+            0 0 0.125em rgba($color-5, 0.3),
+            1em -0.125em 0.5em rgba(255, 187, 51, 0),
+            -1em 0.125em 0.5em rgba(51, 187, 255, 0);
     }
 }

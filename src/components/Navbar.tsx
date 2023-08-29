@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Drawer from "./Drawer";
-import SearchBar from "./SearchBar";
 
 import { sections } from "../data/datas";
 
@@ -29,13 +28,13 @@ function DisplaySearch(props: DisplayProps) {
                 <Drawer onSearch={props.onSearch}>
                     {
                         sections.map((section, index) => (
-                            <div className="section" key={index}>
-                                <div className="wrapper">
-                                    <h2>{section.title}</h2>
-                                    <ul>
+                            <div className="drawer__section" key={index}>
+                                <div className="drawer__wrapper">
+                                    <span className="drawer__section__title">{section.title}</span>
+                                    <ul className="drawer__section__list">
                                         {section.links.map((link, index) => (
-                                            <li key={index}>
-                                                <Link to={link.link}>{link.title}</Link>
+                                            <li className="drawer__section__item" key={index}>
+                                                <Link className="drawer__section__link" to={link.link}>{link.title}</Link>
                                             </li>
                                         ))}
                                     </ul>
@@ -82,7 +81,8 @@ function Navbar(props: Props) {
             <div className="Navbar__container">
                 {
                     activateSearchBar ?
-                        <SearchBar onSearch={props.onSearch} />
+                        <h1 className="Navbar__empty__title">Please enter a city name</h1>
+
                         :
                         <DisplaySearch search={props.search} data={props.data} onSearch={props.onSearch} />
                 }

@@ -103,7 +103,7 @@ function Home() {
                             astronomy={astronomy}
                             sports={sports}
                         />
-                        : <EmptySearch />
+                        : <EmptySearch onSearch={getSearchWeather} />
                 }
                 <Footer />
             </div>

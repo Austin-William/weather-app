@@ -54,7 +54,7 @@ const sections = [
             },
             {
                 title: "LinkedIn",
-                link: "https://www.linkedin.com/in/austin-william-lo/",
+                link: "https://www.linkedin.com/in/austin-william-lo-2a75271a1/",
             },
         ]
     }

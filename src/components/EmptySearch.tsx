@@ -1,12 +1,18 @@
 import React from "react";
 
+import SearchBar from "./SearchBar";
+
 import "../styles/components/EmptySearch.scss";
 
-function EmptySearch() {
+interface Props {
+    onSearch: (search: string) => void;
+}
+
+function EmptySearch(props: Props) {
     return (
         <div className="EmptySearch">
             <div className="container">
-                <h1 className="title">Please enter a city name</h1>
+                <SearchBar onSearch={props.onSearch} />
             </div>
         </div>
     );
