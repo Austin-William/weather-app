@@ -16,7 +16,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0 20px;
+        width: 100%;
     }
 }
 
@@ -28,7 +28,8 @@
     justify-content: space-between;
 
     .datas__container {
-        flex-basis: 33.33%;
+        flex-basis: 33%;
+        padding: 0 1rem;
 
         .drawer__section {
             display: flex;
@@ -93,14 +94,14 @@
 
     .datas__title__center {
         font-size: clamp(0.8rem, 1.6vw, 1.2rem);
-        font-weight: 500;
+        font-weight: 600;
         color: $color-1;
         letter-spacing: 1px;
         text-align: center;
     }
 
     .datas__title__right {
-        font-size: clamp(0.6rem, 1.5vw, 1rem);
+        font-size: clamp(0.6rem, 1vw, 1rem);
         color: $color-1;
         letter-spacing: 1px;
         text-align: right;
@@ -160,5 +161,13 @@
             0 0 0.125em rgba($color-5, 0.3),
             1em -0.125em 0.5em rgba(255, 187, 51, 0),
             -1em 0.125em 0.5em rgba(51, 187, 255, 0);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .datas {
+        .datas__container {
+            padding: 0 0.5rem;
+        }
     }
 }

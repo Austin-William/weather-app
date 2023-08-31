@@ -12,7 +12,6 @@ import "../styles/pages/Home.scss";
 function Home() {
     const [currentWeather, setCurrentWeather] = React.useState(null);
     const [forecast, setForecast] = React.useState(null);
-    const [timezone, setTimezone] = React.useState(null);
     const [marine, setMarine] = React.useState(null);
     const [astronomy, setAstronomy] = React.useState(null);
     const [sports, setSports] = React.useState(null);
@@ -48,9 +47,6 @@ function Home() {
                             case "forecast":
                                 setForecast(response.data);
                                 break;
-                            case "timezone":
-                                setTimezone(response.data);
-                                break;
                             case "marine":
                                 setMarine(response.data);
                                 break;
@@ -83,7 +79,7 @@ function Home() {
         function getDatas() {
             getDataFromApi();
             getDataFromApi("forecast");
-            //getDataFromApi("timezone");
+            getDataFromApi("astronomy");
         }
 
         getDatas();
@@ -98,7 +94,6 @@ function Home() {
                         <Weather
                             current={currentWeather}
                             forecast={forecast}
-                            timezone={timezone}
                             marine={marine}
                             astronomy={astronomy}
                             sports={sports}

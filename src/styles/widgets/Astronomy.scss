@@ -1,0 +1,78 @@
+.astronomy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .astronomy__title {
+        font-size: clamp(1.5rem, 2vw, 2rem);
+        font-weight: 700;
+    }
+
+    .astronomy__container__content {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 100%;
+
+        .astronomy__card {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 1rem;
+            margin: 1rem;
+            height: clamp(10rem, 30vw, 30rem);
+            width: clamp(15rem, 30vw, 30rem);
+            border-radius: 1rem;
+            background-color: var(--color-primary);
+            box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+
+            &:hover {
+                .astronomy__card__image {
+                    opacity: 0.8;
+                    scale: 1.1;
+                }
+            }
+
+            .astronomy__card__image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 1rem;
+                object-fit: cover;
+                object-position: center;
+                z-index: 0;
+                opacity: 0.5;
+                transition: all 0.5s ease-in-out;
+            }
+
+            .astronomy__card__right,
+            .astronomy__card__left {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                z-index: 1;
+
+                .astronomy__card__title {
+                    font-size: clamp(1rem, 1.5vw, 1.5rem);
+                    font-weight: 700;
+                    color: var(--color-white);
+                }
+
+                .astronomy__card__content {
+                    font-size: clamp(0.75rem, 1vw, 1rem);
+                    font-weight: 400;
+                    color: var(--color-white);
+                }
+            }
+        }
+    }
+}

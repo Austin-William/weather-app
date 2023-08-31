@@ -44,12 +44,12 @@ function DisplaySearch(props: DisplayProps) {
                     }
                 </Drawer>
             </div>
-            <h1 className="datas__container datas__title__center">
+            <span className="datas__container datas__title__center">
                 Searched city : {search}
-            </h1>
-            <h1 className="datas__container datas__title__right">
+            </span>
+            <span className="datas__container datas__title__right">
                 Last updated : {props.data?.current.last_updated}
-            </h1>
+            </span>
         </div>
     )
 }

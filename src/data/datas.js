@@ -11,10 +11,6 @@ const sections = [
                 link: "/forecast",
             },
             {
-                title: "Timezone",
-                link: "/timezone",
-            },
-            {
                 title: "Marine",
                 link: "/marine",
             },
