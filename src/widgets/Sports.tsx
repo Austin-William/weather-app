@@ -178,7 +178,9 @@ function Sports(props: Props) {
                             </div>
                         </details>
                         <section className='sports__content'>
-
+                            <h1 className='coming__soon__text'>
+                                Coming soon...
+                            </h1>
                         </section>
                     </div>
                     :
