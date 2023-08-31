@@ -11,10 +11,6 @@ const sections = [
                 link: "/forecast",
             },
             {
-                title: "Marine",
-                link: "/marine",
-            },
-            {
                 title: "Astronomy",
                 link: "/astronomy",
             },

@@ -39,7 +39,7 @@ function Home() {
             if (search) {
                 axios.get(`${link}/${type}.json?key=${key}&q=${search}`)
                     .then((response) => {
-                        console.log(response.data);
+                        console.log(type, response.data);
                         switch (type) {
                             case "current" || "search":
                                 setCurrentWeather(response.data);
@@ -79,7 +79,9 @@ function Home() {
         function getDatas() {
             getDataFromApi();
             getDataFromApi("forecast");
+            getDataFromApi("marine");
             getDataFromApi("astronomy");
+            getDataFromApi("sports");
         }
 
         getDatas();

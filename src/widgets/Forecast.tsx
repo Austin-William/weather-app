@@ -22,8 +22,6 @@ function Forecast(props: Props) {
 
     const data = props.data.forecast.forecastday[0];
 
-    console.log(data);
-
     function delayDisplay() {
         setTimeout(() => {
             setIsLoaded(true);
