@@ -15,15 +15,17 @@ function Astronomy(props: Props) {
 
     const data = props.data.astronomy.astro;
 
-    function delayDisplay() {
-        if (backgroundMoonset && backgroundSunset) {
-            setTimeout(() => {
-                setIsLoaded(true);
-            }, 1000);
-        }
-    }
+
 
     React.useEffect(() => {
+        function delayDisplay() {
+            if (backgroundMoonset && backgroundSunset) {
+                setTimeout(() => {
+                    setIsLoaded(true);
+                }, 1000);
+            }
+        }
+
         setBackgroundSunset("https://source.unsplash.com/random/?sunset");
         setBackgroundMoonset("https://source.unsplash.com/random/?moonset");
         delayDisplay();

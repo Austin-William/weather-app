@@ -12,9 +12,7 @@ import "../styles/pages/Home.scss";
 function Home() {
     const [currentWeather, setCurrentWeather] = React.useState(null);
     const [forecast, setForecast] = React.useState(null);
-    const [marine, setMarine] = React.useState(null);
     const [astronomy, setAstronomy] = React.useState(null);
-    const [sports, setSports] = React.useState(null);
 
     let search = localStorage.getItem("search");
 
@@ -39,7 +37,6 @@ function Home() {
             if (search) {
                 axios.get(`${link}/${type}.json?key=${key}&q=${search}`)
                     .then((response) => {
-                        console.log(type, response.data);
                         switch (type) {
                             case "current" || "search":
                                 setCurrentWeather(response.data);
@@ -47,14 +44,8 @@ function Home() {
                             case "forecast":
                                 setForecast(response.data);
                                 break;
-                            case "marine":
-                                setMarine(response.data);
-                                break;
                             case "astronomy":
                                 setAstronomy(response.data);
-                                break;
-                            case "sports":
-                                setSports(response.data);
                                 break;
 
                             default:
@@ -79,9 +70,7 @@ function Home() {
         function getDatas() {
             getDataFromApi();
             getDataFromApi("forecast");
-            getDataFromApi("marine");
             getDataFromApi("astronomy");
-            getDataFromApi("sports");
         }
 
         getDatas();
@@ -94,11 +83,10 @@ function Home() {
                 {
                     search && currentWeather && forecast ?
                         <Weather
+                            search={search}
                             current={currentWeather}
                             forecast={forecast}
-                            marine={marine}
                             astronomy={astronomy}
-                            sports={sports}
                         />
                         : <EmptySearch onSearch={getSearchWeather} />
                 }

@@ -9,18 +9,17 @@ import Sports from "../widgets/Sports";
 import "../styles/screens/Weather.scss";
 
 interface Props {
+    search: string;
     current: any;
     forecast: any;
-    marine: any;
     astronomy: any;
-    sports: any;
 }
 
 function Weather(props: Props) {
+    const search = props.search;
     const currentData = props.current;
     const forecastData = props.forecast;
     const astronomyData = props.astronomy;
-    const sportsData = props.sports;
 
     return (
         <div className="Weather">
@@ -29,7 +28,7 @@ function Weather(props: Props) {
                     <Route path="/" element={<CurrentWeather data={currentData} />} />
                     <Route path="/forecast" element={<Forecast data={forecastData} />} />
                     <Route path="/astronomy" element={<Astronomy data={astronomyData} />} />
-                    <Route path="/sports" element={<Sports data={sportsData} />} />
+                    <Route path="/sports" element={<Sports search={search} />} />
                     <Route path="*" element={<CurrentWeather data={currentData} />} />
                 </Routes>
             </div>
