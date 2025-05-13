@@ -1,6 +1,6 @@
 {
+    "homepage": "https://austin-william.github.io/weather-app/",
     "name": "what-the-weather-like-today",
-    "homepage": "https://austin-william.github.io/WhatIsTheWeatherLikeToday/",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
