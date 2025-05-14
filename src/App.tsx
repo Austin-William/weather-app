@@ -8,7 +8,7 @@ import './styles/App.scss';
 function App() {
     return (
         <div className="App">
-            <BrowserRouter basename="WhatIsTheWeatherLikeToday">
+            <BrowserRouter basename="weather-app">
                 <Home />
             </BrowserRouter>
         </div>
