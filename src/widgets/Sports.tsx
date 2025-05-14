@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from "react-toastify";
 
@@ -11,19 +11,19 @@ interface Props {
 }
 
 function Sports(props: Props) {
-    const [isLoaded, setIsLoaded] = React.useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
 
-    const [searchedStadium, setSearchedStadium] = React.useState('');
-    const [searchedCountry, setSearchedCountry] = React.useState('');
-    const [searchedRegion, setSearchedRegion] = React.useState('');
-    const [searchedTournament, setSearchedTournament] = React.useState('');
-    const [searchedMatch, setSearchedMatch] = React.useState('');
+    const [searchedStadium, setSearchedStadium] = useState('');
+    const [searchedCountry, setSearchedCountry] = useState('');
+    const [searchedRegion, setSearchedRegion] = useState('');
+    const [searchedTournament, setSearchedTournament] = useState('');
+    const [searchedMatch, setSearchedMatch] = useState('');
 
-    const [displayStadiumSearchBar, setDisplayStadiumSearchBar] = React.useState(false);
-    const [displayCountrySearchBar, setDisplayCountrySearchBar] = React.useState(false);
-    const [displayRegionSearchBar, setDisplayRegionSearchBar] = React.useState(false);
-    const [displayTournamentSearchBar, setDisplayTournamentSearchBar] = React.useState(false);
-    const [displayMatchSearchBar, setDisplayMatchSearchBar] = React.useState(false);
+    const [displayStadiumSearchBar, setDisplayStadiumSearchBar] = useState(false);
+    const [displayCountrySearchBar, setDisplayCountrySearchBar] = useState(false);
+    const [displayRegionSearchBar, setDisplayRegionSearchBar] = useState(false);
+    const [displayTournamentSearchBar, setDisplayTournamentSearchBar] = useState(false);
+    const [displayMatchSearchBar, setDisplayMatchSearchBar] = useState(false);
 
     const key = process.env.REACT_APP_API_KEY;
     const link = "http://api.weatherapi.com/v1";
@@ -65,7 +65,7 @@ function Sports(props: Props) {
         }, 1000);
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         delayDisplay();
     }, [isLoaded]);
 

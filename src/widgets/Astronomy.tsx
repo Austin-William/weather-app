@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 
 import Spinner from "../components/Spinner";
 
@@ -9,15 +9,15 @@ interface Props {
 }
 
 function Astronomy(props: Props) {
-    const [isLoaded, setIsLoaded] = React.useState(false);
-    const [backgroundSunset, setBackgroundSunset] = React.useState("");
-    const [backgroundMoonset, setBackgroundMoonset] = React.useState("");
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [backgroundSunset, setBackgroundSunset] = useState("");
+    const [backgroundMoonset, setBackgroundMoonset] = useState("");
 
     const data = props.data.astronomy.astro;
 
 
 
-    React.useEffect(() => {
+    useEffect(() => {
         function delayDisplay() {
             if (backgroundMoonset && backgroundSunset) {
                 setTimeout(() => {

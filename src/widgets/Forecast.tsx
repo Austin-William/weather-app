@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { FaWind } from "react-icons/fa";
 import { CiTempHigh } from "react-icons/ci";
 import { IoEarth, IoRainySharp, IoWater } from "react-icons/io5";
@@ -16,9 +16,9 @@ interface Props {
 }
 
 function Forecast(props: Props) {
-    const [isCelsius, setIsCelsius] = React.useState(true);
-    const [isKm, setIsKm] = React.useState(true);
-    const [isLoaded, setIsLoaded] = React.useState(false);
+    const [isCelsius, setIsCelsius] = useState(true);
+    const [isKm, setIsKm] = useState(true);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     const data = props.data.forecast.forecastday[0];
 
@@ -28,7 +28,7 @@ function Forecast(props: Props) {
         }, 1000);
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         delayDisplay();
     }, [isLoaded]);
 

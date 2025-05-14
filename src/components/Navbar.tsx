@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import Drawer from "./Drawer";
@@ -55,8 +55,8 @@ function DisplaySearch(props: DisplayProps) {
 }
 
 function Navbar(props: Props) {
-    const [search, setSearch] = React.useState("");
-    const [activateSearchBar, setActivateSearchBar] = React.useState(false);
+    const [search, setSearch] = useState("");
+    const [activateSearchBar, setActivateSearchBar] = useState(false);
 
     function checkSearched() {
         if (search !== "") {
@@ -71,7 +71,7 @@ function Navbar(props: Props) {
         setSearch(props.search);
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         getSearch();
         checkSearched();
     });

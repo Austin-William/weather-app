@@ -2,8 +2,9 @@ import React from 'react';
 import { LiaTimesCircle } from 'react-icons/lia';
 import { BsListNested } from 'react-icons/bs';
 
-import "../styles/components/Drawer.scss";
 import SearchBar from './SearchBar';
+
+import "../styles/components/Drawer.scss";
 
 interface DrawerProps {
     children: React.ReactNode;

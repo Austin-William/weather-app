@@ -1,6 +1,6 @@
-import React from "react";
-import axios from "axios";
+import { useState, useEffect} from "react";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -10,9 +10,9 @@ import Weather from "../screens/Weather";
 import "../styles/pages/Home.scss";
 
 function Home() {
-    const [currentWeather, setCurrentWeather] = React.useState(null);
-    const [forecast, setForecast] = React.useState(null);
-    const [astronomy, setAstronomy] = React.useState(null);
+    const [currentWeather, setCurrentWeather] = useState(null);
+    const [forecast, setForecast] = useState(null);
+    const [astronomy, setAstronomy] = useState(null);
 
     let search = localStorage.getItem("search");
 
@@ -32,7 +32,7 @@ function Home() {
         }
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         function getDataFromApi(type: string = "current") {
             if (search) {
                 axios.get(`${link}/${type}.json?key=${key}&q=${search}`)
